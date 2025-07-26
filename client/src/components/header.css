@@ -1,0 +1,16 @@
+.logout-btn {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 800;
+  font-size: 30px;
+  padding: 8px 14px;
+  background: #D8BE90;
+  border: none;
+  color: #81460A;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out; 
+}
+
+.logout-btn:hover {
+  background: #81460A;
+  color: #D8BE90;
+}

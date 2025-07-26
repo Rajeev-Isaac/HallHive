@@ -1,0 +1,25 @@
+1. 3 different users : Customer, Admin, Owner
+
+2. Home Page : Info about App and Login and Register
+
+hall booking clash date availability
+
+list of halls booked 
+
+fontFamily: "Playwrite AU QLD, cursive",
+fontOpticalSizing: "auto",
+fontSize: "50px",
+fontWeight: "bold",
+
+fontFamily: "DM Sans, sans-serif",
+fontOpticalSizing:  auto,
+fontWeight: "bold",
+fontStyle: normal,
+fontSize: "50px",
+Italic: 0
+Optical Size: Auto
+Weight: 100 – 1000
+
+81460A
+D8BE90
+

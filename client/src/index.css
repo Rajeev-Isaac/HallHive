@@ -1,0 +1,38 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/* Place the scrollbar on the left */
+body {
+  direction: rtl; /* This flips the scrollbar to the left */
+  overflow-y: scroll;
+}
+
+/* Flip text alignment back to normal */
+body * {
+  direction: ltr;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 14px; /* Scrollbar width */
+  background-color: #D8BE90; /* Background of the scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #81460A; /* Thumb color */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #D8BE90; /* Track color */
+}
+
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
