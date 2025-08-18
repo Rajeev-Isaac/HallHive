@@ -1,0 +1,86 @@
+.book-hall-page {
+  background-color: black;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+
+.book-hall-container {
+   font-family: "DM Sans", "sans-serif";
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: normal;
+  max-width: 40vw;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  color: #333;
+}
+
+.book-hall-container h2 {
+  text-align: center;
+  color: black;
+  margin-bottom: 25px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.book-hall-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #555;
+  font-size: 15px;
+}
+
+.book-hall-form input[type="date"],
+.book-hall-form input[type="number"],
+.book-hall-form input[type="text"],
+.book-hall-form input[type="tel"] {
+  width: calc(100% - 20px);
+  padding: 12px 10px;
+  margin-bottom: 20px;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+  font-size: 16px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+.book-hall-form input[type="date"]:hover,
+.book-hall-form input[type="number"]:hover,
+.book-hall-form input[type="text"]:hover,
+.book-hall-form input[type="tel"]:hover {
+  border-color: white;
+  color: white;
+  background-color: black;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+.book-hall-form button {
+  width: 96.5%;
+  padding: 15px 20px;
+  background-color: black;
+  color: white;
+  border: none;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 15px;
+}
+
+.book-hall-form button:hover {
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+  transform: translateY(-2px);
+}
+
+.book-hall-form button:active {
+  background-color: #1e7e34;
+  transform: translateY(0);
+}

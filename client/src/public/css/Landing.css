@@ -1,0 +1,132 @@
+.lh{
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lo{
+  margin-top: 30vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+}
+.lttl{
+  font-family: "Playwrite AU QLD" , "cursive";
+  font-optical-sizing: auto;
+  font-weight: 300;
+  color: white;
+  font-size: 4rem;
+}
+
+.lsbhd{
+  font-family: "DM Sans", "sans-serif";
+  font-optical-sizing: auto;
+  color: black;
+  background-color: white;
+  font-size: 1.5rem;
+  margin-top: 3vh;
+  text-align: center;
+}
+
+.lsbhd:hover{
+  background-color: black;
+  color: white;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+
+.lbtn{
+  width: 15vw;
+  font-size: 1rem;
+  font-family: "DM Sans", "sans-serif";
+  font-optical-sizing: auto;
+  font-weight: bold;
+  margin-left: 2vw;
+  margin-top: 3vh;
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  transition: 0.5s ease;
+  border: 2px solid black;
+}
+
+.lbtn:hover{
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+}
+
+.linf{
+  font-family: "DM Sans", "sans-serif";
+  font-optical-sizing: auto;
+  color: black;
+  font-size: 1.2rem;
+  margin-top: 25vh;
+}
+
+.linfh{
+  font-family: "Playwrite AU QLD" , "cursive";
+  font-optical-sizing: auto;
+  color: black;
+  font-size: 1.3rem;
+  margin-bottom: 1vh;
+  width: 15vw;
+  background-color: white;
+}
+
+.linfh:hover{
+  background-color: black;
+  color: white;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+.lli{
+  margin-top: 5vh;
+  font-family: "DM Sans", "sans-serif";
+  font-optical-sizing: auto;
+  color: black;
+  
+  font-size: 0.9rem;
+  list-style-type: none;
+  padding: 0;
+}
+
+.lli li{
+  padding:10px;
+  margin-top: 10px;
+  background-color: white;
+}
+
+.lhi{
+  font-family: "Playwrite AU QLD" , "cursive";
+  font-optical-sizing: auto;
+  font-weight: bold;
+}
+.lli li:hover{
+  background-color: black;
+  color: white;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: white;
+}
+
+
+::-webkit-scrollbar-thumb {
+  background: black;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: grey;
+}

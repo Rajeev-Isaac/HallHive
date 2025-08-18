@@ -1,0 +1,46 @@
+.header{
+  height: 12vh;
+  display: flex;
+}
+
+.logo{
+  text-decoration: none;
+  font-family: "Playwrite AU QLD" , "cursive";
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-size: 2rem;
+  color: #333;
+  display: flex;
+  width: 75vw;
+  margin-left: 2vw;
+}
+
+.nav{
+  font-family: "DM Sans", "sans-serif";
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: normal;
+  display: flex;
+  align-items: center;
+}
+
+.logout-btn{
+  text-decoration: none;
+  font-family: "DM Sans", "sans-serif";
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: normal;
+  margin-left: 2vw;
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  transition: 0.5s ease;
+  border: 2px solid black;
+}
+
+.logout-btn:hover{
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+}

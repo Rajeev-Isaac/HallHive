@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Use Case Diagram - Hall Booking System</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: white;
+            color: #000;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border: 2px solid #000;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #000;
+            padding-bottom: 15px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+        }
+        .header p {
+            margin: 5px 0 0 0;
+            font-size: 14px;
+            color: #333;
+        }
+        .mermaid {
+            display: flex;
+            justify-content: center;
+            background: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+            font-size: 18px;
+        }
+        
+        /* Print-friendly styles */
+        @media print {
+            body { 
+                background: white; 
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .container { 
+                border: 2px solid #000; 
+                box-shadow: none;
+                max-width: none;
+                width: 100%;
+            }
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.1/mermaid.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>USE CASE DIAGRAM</h1>
+            <p>Hall Booking Management System</p>
+        </div>
+        
+        <div class="mermaid">
+            flowchart TD
+            linkStyle default interpolate linear
+
+            %% === Actors ===
+            User[User]:::actor
+            Admin[Admin (Default)]:::actor
+            Gateway[Payment Gateway]:::actor
+
+            %% === User Use Cases ===
+            Signup((Sign Up)):::usecase
+            UserLogin((Login)):::usecase
+            Browse((Browse Halls)):::usecase
+            Search((Search Halls)):::usecase
+            Book((Book Hall)):::usecase
+            PayCash((Pay by Cash)):::usecase
+            PayCard((Pay by Card)):::usecase
+            MyBookings((My Bookings)):::usecase
+
+            %% === Admin Use Cases ===
+            AdminLogin((Login)):::usecase
+            AddHall((Add Hall)):::usecase
+            ViewHalls((View All Halls)):::usecase
+            ViewBookings((View All Bookings)):::usecase
+
+            %% === Actor Links ===
+            User --> Signup
+            User --> UserLogin
+            User --> Browse
+            User --> Search
+            User --> Book
+            User --> PayCash
+            User --> PayCard
+            User --> MyBookings
+
+            Admin --> AdminLogin
+            Admin --> AddHall
+            Admin --> ViewHalls
+            Admin --> ViewBookings
+
+            Gateway --> PayCard
+
+            %% === Internal Flow ===
+            Book --> PayCash
+            Book --> PayCard
+            PayCard --> Gateway
+            Book --> MyBookings
+
+            %% === Styling ===
+            classDef actor fill:#cce5ff,stroke:#004085,stroke-width:2px,color:#000,font-weight:bold
+            classDef usecase fill:#ffffff,stroke:#000000,stroke-width:1.5px,color:#000000
+
+            class User,Admin,Gateway actor
+            class Signup,UserLogin,Browse,Search,Book,PayCash,PayCard,MyBookings,AdminLogin,AddHall,ViewHalls,ViewBookings usecase
+        </div>
+
+    </div>
+    
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                primaryColor: '#fff',
+                primaryTextColor: '#000',
+                primaryBorderColor: '#000',
+                lineColor: '#000',
+                secondaryColor: '#e3f2fd',
+                tertiaryColor: '#f5f5f5',
+                background: '#fff',
+                mainBkg: '#fff',
+                secondBkg: '#f5f5f5',
+                tertiaryBkg: '#e3f2fd',
+                primaryTextSize: '18px'
+            },
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis'
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+.ab-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: black;
+  padding: 20px;
+}
+.ab-in-container {
+  display: flex;
+  align-items: flex-start;
+  background-color: black;
+}
+.ab-card{
+  padding: 10px;
+  margin: 10px;
+  flex-direction: column;
+  color : white;
+  border: 2px solid white;
+  width: auto;
+}
+.ab-card:hover {
+  transition: 0.5s ease;
+  background-color: white;
+  color: black; /* Darker blue on hover */
+}
+.ab-card h4{
+  font-family: "DM Sans", "sans-serif";
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 1.5rem;
+  margin-left: 10px;
+}
+
+.ab-card p {
+  font-family: "DM Sans", "sans-serif";
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+.ab-title {
+  margin-left: 2vw;
+  font-family: "Playwrite AU QLD", "cursive";
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-size: 1.5rem;
+  color: white;
+}

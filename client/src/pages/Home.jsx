@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "../public/css/Home.css"; 
+import { toast } from "react-toastify";
 
 const Home = () => {
   const [halls, setHalls] = useState([]);
@@ -121,7 +123,7 @@ const Home = () => {
       const res = await axios.post("http://localhost:5000/api/halls/add", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
-      alert(res.data.msg || "Hall added successfully!");
+      toast.success(res.data.msg || "Hall added successfully!");
       setHalls([...halls, res.data.hall]);
       setNewHall({
         name: "",
@@ -132,7 +134,7 @@ const Home = () => {
       });
       setImageFile(null);
     } catch (err) {
-      alert(err.response?.data?.msg || "Failed to add hall");
+      toast.error(err.response?.data?.msg || "Failed to add hall");
     }
   };
 
@@ -149,78 +151,77 @@ const Home = () => {
   };
 
   return (
-    <div className="app-container">
+    <div className="home-container">
       <h2>Welcome {user?.name || "Guest"}!</h2>
 
       {user?.role === "customer" && (
         <button
-          className="button"
-          style={{ background: "#007bff", marginBottom: 20 }}
+          className="bkd-button"
           onClick={handleViewBookedHalls}
         >
-          View My Booked Halls
+          Your Booked Halls
         </button>
       )}
 
       {user?.role === "admin" && (
-        <div className="card">
-          <h3>Add New Hall</h3>
-          <form onSubmit={handleAddHall} encType="multipart/form-data">
-            <input name="name" placeholder="Name" value={newHall.name} onChange={handleHallChange} required />
-            <input name="location" placeholder="Location" value={newHall.location} onChange={handleHallChange} required />
-            <input name="capacity" type="number" placeholder="Capacity" value={newHall.capacity} onChange={handleHallChange} required />
-            <input name="price" type="number" placeholder="Price" value={newHall.price} onChange={handleHallChange} required />
-            <input type="file" accept="image/*" onChange={handleImageChange} required />
-            <button type="submit" className="button">Add Hall</button>
-          </form>
+        <div style={{ display: "flex", gap: "20px", marginBottom: "30px" }}>
+          <button className="add-hall-button" onClick={() => navigate("/add-hall")}>
+            Add New Hall
+          </button>
+          <button className="view-bks-button" onClick={() => navigate("/admin-bookings")}>
+            View All Bookings
+          </button>
         </div>
       )}
 
       {user?.role === "customer" && (
-        <div className="card" style={{ maxWidth: 400 }}>
-          <h3>Search Halls</h3>
-          <input name="name" placeholder="Search by Name" value={search.name} onChange={handleSearchChange} />
-          <input name="location" placeholder="Search by Location" value={search.location} onChange={handleSearchChange} />
-          <div style={{ display: "flex", gap: "8px" }}>
-            <input name="minCapacity" type="number" placeholder="Min Capacity" value={search.minCapacity} onChange={handleSearchChange} style={{ width: "48%" }} />
-            <input name="maxCapacity" type="number" placeholder="Max Capacity" value={search.maxCapacity} onChange={handleSearchChange} style={{ width: "48%" }} />
+        <><h3 className="home-title">Search Halls</h3>
+        <div className="search-container">
+          <input className="byname" name="name" placeholder="Search by Name" value={search.name} onChange={handleSearchChange} />
+          <input className="bylocation" name="location" placeholder="Search by Location" value={search.location} onChange={handleSearchChange} />
+          <input className="bycapacity" name="minCapacity" type="number" placeholder="Min Capacity" value={search.minCapacity} onChange={handleSearchChange} style={{ width: "48%" }} />
+          <input className="bycapacity" name="maxCapacity" type="number" placeholder="Max Capacity" value={search.maxCapacity} onChange={handleSearchChange} style={{ width: "48%" }} />
+          <input className="byprice" name="minPrice" type="number" placeholder="Min Price" value={search.minPrice} onChange={handleSearchChange} style={{ width: "48%" }} />
+          <input className="byprice" name="maxPrice" type="number" placeholder="Max Price" value={search.maxPrice} onChange={handleSearchChange} style={{ width: "48%" }} />
+          <input className="bydate" name="date" type="date" value={search.date} onChange={(e) => setSearch({ ...search, date: e.target.value })} placeholder="Select Date" style={{ width: "48%" }} />
           </div>
-          <div style={{ display: "flex", gap: "8px" }}>
-            <input name="minPrice" type="number" placeholder="Min Price" value={search.minPrice} onChange={handleSearchChange} style={{ width: "48%" }} />
-            <input name="maxPrice" type="number" placeholder="Max Price" value={search.maxPrice} onChange={handleSearchChange} style={{ width: "48%" }} />
-          </div>
-          <input name="date" type="date" placeholder="Date" value={search.date} onChange={handleSearchChange} />
-        </div>
+        </>
+        
       )}
 
-      <h3>Available Halls</h3>
+      <h3 className="home-title">Available Halls</h3>
       {(user?.role === "customer" ? filteredHalls : halls).length === 0 ? (
         <p>No halls available</p>
       ) : (
         (user?.role === "customer" ? filteredHalls : halls).map((hall) => (
           <div key={hall._id} className="card">
-            <h4>{hall.name}</h4>
-            <p><strong>Location:</strong> {hall.location}</p>
-            <p><strong>Capacity:</strong> {hall.capacity}</p>
-            <p><strong>Price:</strong> ₹{hall.price}</p>
+          {/* Left Section: Details and Book Now button */}
+            <div className="card-details">
+              <h4>{hall.name}</h4>
+                <p><strong>Location:</strong> {hall.location}</p>
+                <p><strong>Capacity:</strong> {hall.capacity}</p>
+                <p><strong>Price:</strong> ₹{hall.price}</p>
+                {search.date && hall.isBookedOnDate ? (
+                  <div className="booked-message">
+                    Already booked on {search.date}
+                  </div>
+                ) : (
+                user?.role === "customer" && (
+                <button onClick={() => handleBooking(hall._id)} className="button">
+                  Book Now
+                </button>
+              )
+          )}
+          </div>
+          {/* Right Section: Image */}
+            <div className="card-image-container">
             <img
               src={hall.image ? `http://localhost:5000/uploads/${hall.image}` : "https://via.placeholder.com/350x200?text=No+Image"}
               alt={hall.name}
               className="img-responsive"
               onError={e => { e.target.onerror = null; e.target.src = "https://via.placeholder.com/350x200?text=No+Image"; }}
             />
-            {search.date && hall.isBookedOnDate ? (
-              <div style={{ color: "red", fontWeight: "bold", marginTop: 10 }}>
-                Already booked on {search.date}
-                {hall.bookedBy && <span> by {hall.bookedBy}</span>}
-              </div>
-            ) : (
-              user?.role === "customer" && (
-                <button onClick={() => handleBooking(hall._id)} className="button">
-                  Book Now
-                </button>
-              )
-            )}
+            </div>
           </div>
         ))
       )}

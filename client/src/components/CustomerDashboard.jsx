@@ -32,9 +32,9 @@ function CustomerDashboard() {
         date: bookingDate[hallId],
       });
 
-      alert("Booking successful!");
+      toast("Booking successful");
     } catch (err) {
-      alert("Booking failed");
+      toast.error("Booking failed");
       console.error("Booking error:", err);
     }
   };

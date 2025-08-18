@@ -1,0 +1,83 @@
+
+POST http://192.168.4.60/api/users
+Content-Type: application/json
+Authorization: Bearer 15756~:~!725376497054314e49682f5250554b47575439415567582f7168386838703645786e2b2f547930546a6b733d~:~!0
+
+payload data: 
+
+{
+  "userName":"testuser",
+  "firstName":"test",
+  "lastName":"1",
+  "sendEmail":false,
+  "authenticationMethod":"NATIVE",
+  "emailAddress":"test@g.com",
+  "workPhone":null,
+  "mobilePhone":null,
+  "language":"en_US",
+  "country":"Angola",
+  "timeZone":"ACT",
+  "connectorId":null,
+  "mappingUserId":null,
+  "mappingUserName":null,
+  "customAttributes":{},
+  "adminAccess":false,
+  "domainAccess":false,
+  "reportAccess":false,
+  "dashboardAccess":false,
+  "excelConnectAccess":false,
+  "splashGLAccess":false,
+  "mobileAccess":false,
+  "clientAdminAccess":false,
+  "autoGeneratePassword":false,
+  "passwordLink":true,
+  "passwordAuthentication":false,
+  "enabled":true
+}
+
+PUT http://192.168.4.60/api/users/testuser updated password
+Content-Type: application/json
+Authorization: Bearer 15756~:~!725376497054314e49682f5250554b47575439415567582f7168386838703645786e2b2f547930546a6b733d~:~!0
+
+payload data: 
+{
+  "userName":"testuser",
+  "firstName":"test",
+  "lastName":"1",
+  "sendEmail":false,
+  "authenticationMethod":"NATIVE",
+  "emailAddress":"test@g.com",
+  "workPhone":null,
+  "mobilePhone":null,
+  "language":"en_US",
+  "country":"Angola",
+  "timeZone":"ACT",
+  "connectorId":null,
+  "mappingUserId":null,
+  "mappingUserName":null,
+  "customAttributes":{},
+  "adminAccess":false,
+  "domainAccess":false,
+  "reportAccess":false,
+  "dashboardAccess":false,
+  "excelConnectAccess":false,
+  "splashGLAccess":false,
+  "mobileAccess":false,
+  "clientAdminAccess":false,
+  "password":"123",
+  "autoGeneratePassword":false,
+  "passwordLink":false,
+  "passwordAuthentication":false,
+  "enabled":true
+}
+
+POST http://192.168.4.60/api/delete-users 
+Content-Type: application/json
+Authorization: Bearer 15756~:~!725376497054314e49682f5250554b47575439415567582f7168386838703645786e2b2f547930546a6b733d~:~!0
+
+payload data: ["testuser"]
+
+
+GET http://192.168.4.60/api/users/basic
+Content-Type: application/json
+Authorization: Bearer 15756~:~!725376497054314e49682f5250554b47575439415567582f7168386838703645786e2b2f547930546a6b733d~:~!0

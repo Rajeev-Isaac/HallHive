@@ -1,6 +1,8 @@
-export default function Footer() { 
+import "../public/css/Footer.css";
+
+export default function Footer() {
   return (
-    <footer style={{ padding: 10, textAlign: 'center', background: '#D8BE90' ,color: '#81460A', fontFamily: "DM Sans, sans-serif", }}>
+    <footer className="footer">
       © 2025 HallHive
     </footer>
   );

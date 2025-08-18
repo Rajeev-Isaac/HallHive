@@ -1,0 +1,14 @@
+.custom-toast {
+  font-family: "DM Sans", "sans-serif";
+  font-optical-sizing: auto;
+  font-style: normal;
+  background-color: black !important;
+  color: white !important;
+  border-radius: 0px !important;
+  box-shadow: none !important;
+}
+
+.custom-toast .Toastify__progress-bar {
+  background: white !important;
+  border-radius: 0px !important;
+}

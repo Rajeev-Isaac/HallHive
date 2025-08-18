@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
+import "../public/css/Payment.css";
+import { toast } from "react-toastify";
 
 const Payment = () => {
   const navigate = useNavigate();
@@ -29,7 +31,8 @@ const Payment = () => {
       paymentMethod: "cash",
       paymentDetails: {}
     });
-    alert("Booking successful! Please pay cash at the venue. Payment status: Pending.");
+    toast("Booking successful! Please pay cash at the venue. Payment status: Pending.");
+
     navigate("/home");
   };
 
@@ -37,11 +40,11 @@ const Payment = () => {
     e.preventDefault();
     if (!otpSent) {
       setOtpSent(true);
-      alert("OTP sent: 123456 (demo)");
+      toast("OTP sent: 123456 (demo)");
       return;
     }
     if (card.otp !== "123456") {
-      alert("Invalid OTP");
+      toast.error("Invalid OTP");
       return;
     }
     await axios.post("http://localhost:5000/api/bookings/payment", {
@@ -54,26 +57,37 @@ const Payment = () => {
         expiry: card.expiry
       }
     });
-    alert("Payment successful! Your booking is confirmed.");
+    toast.success("Payment successful! Your booking is confirmed.");
     navigate("/home");
   };
 
   return (
-    <div style={styles.container}>
-      <div style={styles.card}>
+    <div >
+      
+      <div className="pay-via">
+        
         <h2>Payment Gateway</h2>
         <p>Choose your payment method:</p>
-        <div style={{ marginBottom: 20 }}>
-          <button style={styles.button} onClick={() => handleMethod("cash")}>Pay by Cash</button>
-          <button style={{ ...styles.button, marginLeft: 10 }} onClick={() => handleMethod("card")}>Pay by Card</button>
+        <div >
+          <button
+            className={`pay-option${method === "cash" ? " selected-pay-option" : ""}`}
+            onClick={() => handleMethod("cash")}
+          >
+            Pay by Cash
+          </button>
+          <button
+            className={`pay-option${method === "card" ? " selected-pay-option" : ""}`}
+            onClick={() => handleMethod("card")}
+          >
+            Pay by Card
+          </button>
         </div>
         {method === "cash" && (
-          <button style={styles.button} onClick={handleCash}>Confirm Cash Payment</button>
+          <button className="pay-option" onClick={handleCash}>Confirm Cash Payment</button>
         )}
         {showCardFields && (
-          <form onSubmit={handleCard}>
+          <form className="card-form" onSubmit={handleCard}>
             <input
-              style={styles.input}
               name="number"
               placeholder="Card Number"
               maxLength={16}
@@ -83,7 +97,6 @@ const Payment = () => {
               disabled={otpSent}
             />
             <input
-              style={styles.input}
               name="name"
               placeholder="Cardholder Name"
               required
@@ -92,7 +105,6 @@ const Payment = () => {
               disabled={otpSent}
             />
             <input
-              style={styles.input}
               name="expiry"
               placeholder="Expiry (MM/YY)"
               required
@@ -101,7 +113,6 @@ const Payment = () => {
               disabled={otpSent}
             />
             <input
-              style={styles.input}
               name="cvv"
               placeholder="CVV"
               type="password"
@@ -113,7 +124,6 @@ const Payment = () => {
             />
             {otpSent && (
               <input
-                style={styles.input}
                 name="otp"
                 placeholder="Enter OTP"
                 required
@@ -121,7 +131,7 @@ const Payment = () => {
                 onChange={handleCardChange}
               />
             )}
-            <button type="submit" style={styles.button}>
+            <button className="sendOTP" type="submit" >
               {otpSent ? "Finalize Payment" : "Send OTP"}
             </button>
           </form>
@@ -131,41 +141,5 @@ const Payment = () => {
   );
 };
 
-const styles = {
-  container: {
-    minHeight: "90vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    background: "#f4f4f4"
-  },
-  card: {
-    background: "#fff",
-    padding: "32px",
-    borderRadius: "10px",
-    boxShadow: "0 5px 15px rgba(0,0,0,0.1)",
-    width: "350px",
-    textAlign: "center"
-  },
-  button: {
-    backgroundColor: "#4B0082",
-    color: "#fff",
-    padding: "12px 28px",
-    border: "none",
-    borderRadius: "6px",
-    cursor: "pointer",
-    fontSize: "18px",
-    marginTop: "20px"
-  },
-  input: {
-    display: "block",
-    width: "100%",
-    marginBottom: "15px",
-    padding: "10px",
-    borderRadius: "6px",
-    border: "1px solid #ccc",
-    fontSize: "16px"
-  }
-};
 
 export default Payment;

@@ -38,7 +38,7 @@ function AdminDashboard() {
         ...formData,
         createdBy: user.id,
       });
-      alert("Hall added successfully!");
+      ("Hall added successfully!");
       setFormData({
         name: "",
         location: "",
@@ -48,7 +48,7 @@ function AdminDashboard() {
       });
       fetchAdminHalls();
     } catch (err) {
-      alert("Error adding hall");
+      toast.error("Error adding hall");
       console.error("Error:", err);
     }
   };

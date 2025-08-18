@@ -10,6 +10,7 @@ router.post("/book", async (req, res) => {
     await newBooking.save();
     res.status(201).json({ msg: "Booking successful", booking: newBooking });
   } catch (err) {
+     
     console.error("Booking error:", err);
     res.status(500).json({ msg: "Server error" });
   }
